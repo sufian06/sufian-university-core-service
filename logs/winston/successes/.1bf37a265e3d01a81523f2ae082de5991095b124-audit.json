@@ -54,6 +54,11 @@
             "date": 1701446492624,
             "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-01-12-22-success.log",
             "hash": "171bb727b9a9d495dfca14363ea0a766a0550f80bcc2e4610a10fa6098f8bcc4"
+        },
+        {
+            "date": 1701839068092,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-06-12-11-success.log",
+            "hash": "a170da0750cd24bfb3b6dd515733e391229e72038998ea86b506be0496adb94c"
         }
     ],
     "hashType": "sha256"

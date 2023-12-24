@@ -6,36 +6,6 @@
     "auditLog": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\.1bf37a265e3d01a81523f2ae082de5991095b124-audit.json",
     "files": [
         {
-            "date": 1701839068092,
-            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-06-12-11-success.log",
-            "hash": "a170da0750cd24bfb3b6dd515733e391229e72038998ea86b506be0496adb94c"
-        },
-        {
-            "date": 1701918354212,
-            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-07-12-09-success.log",
-            "hash": "52dfb169b7d0c925b11149f616cc8e80f70e307a006ef2e999573cdc2e6b6cfa"
-        },
-        {
-            "date": 1701952011036,
-            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-07-12-18-success.log",
-            "hash": "bbdb711d9449e56747ca2cbd1c1aef084b0b8ae368d9455f5e36669ee1c68530"
-        },
-        {
-            "date": 1702003349841,
-            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-08-12-08-success.log",
-            "hash": "34d9a6b470ed1897b21271fc8ed831b89b6e8da27ab70e9a77840d1df79136d4"
-        },
-        {
-            "date": 1702004464641,
-            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-08-12-09-success.log",
-            "hash": "e1ea9c20d4bfbcb01166a0da435bc35977a497f2b9f57490086273ed50b14591"
-        },
-        {
-            "date": 1702013484318,
-            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-08-12-11-success.log",
-            "hash": "84ae29c62eba3757b2d1067c815a2f0b9acaabc56c23e9086c831e4c740cdd1a"
-        },
-        {
             "date": 1702180863534,
             "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-10-12-10-success.log",
             "hash": "385f0f965f3c97aad094f2e0f9be792c207a4a0e0994f386e8f89b18ca9b7971"
@@ -109,6 +79,31 @@
             "date": 1703044997932,
             "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-20-12-10-success.log",
             "hash": "696d0d22fe338dad1f601e195d22593a02ecdcf5582387e7d6a674177e2b6af0"
+        },
+        {
+            "date": 1703126290096,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-21-12-08-success.log",
+            "hash": "b80825a220ddb5a48cb1a9d684cff5e1bae77a09c82096b2023f7061c292d236"
+        },
+        {
+            "date": 1703131733261,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-21-12-10-success.log",
+            "hash": "c69e75e0cbe69d1cedc31da290dbba6124f49f1737420cc1555cba84514d6f70"
+        },
+        {
+            "date": 1703135006744,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-21-12-11-success.log",
+            "hash": "67c2777aaeb1e9090cfd6b83a19c865428ce27e52bd6371d6f32bfe487753387"
+        },
+        {
+            "date": 1703139144569,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-21-12-12-success.log",
+            "hash": "8fda5168cb4f7accb79d19b9d7e2e7522d8e3af1b471eccea21eb20529de5b94"
+        },
+        {
+            "date": 1703382786785,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\phu-2023-24-12-07-success.log",
+            "hash": "ba2055e1e9c9da79381707efa5ba1ea5e144c0f877749f9ec70cf1cf7ae68df8"
         }
     ],
     "hashType": "sha256"

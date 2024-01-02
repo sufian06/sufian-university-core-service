@@ -109,6 +109,21 @@
             "date": 1704175766582,
             "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\sum-2024-02-01-12-success.log",
             "hash": "ba2033070603ea244c392ec1355558fef92e876b7e4e3efeb74d4ed30b0aec15"
+        },
+        {
+            "date": 1704183705032,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\sum-2024-02-01-14-success.log",
+            "hash": "c01c31fdf7c2f610fc968d6fa92e2aba05b219a95108cece95243afb71f26739"
+        },
+        {
+            "date": 1704198870589,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\sum-2024-02-01-18-success.log",
+            "hash": "7b20eb5e2b676c39507f3a0078a49d3e27c3aea8b0fc52d11ce11e6bf360b99c"
+        },
+        {
+            "date": 1704200428056,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\successes\\sum-2024-02-01-19-success.log",
+            "hash": "babdf30fc35010ab171d5ab24adef8a8c541873e45a10f1ac1b2af2f6e635410"
         }
     ],
     "hashType": "sha256"

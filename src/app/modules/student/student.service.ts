@@ -147,14 +147,13 @@ const myCourses = async (
     academicSemesterId?: string | undefined;
   }
 ) => {
-
-  if(!filter.academicSemesterId){
+  if (!filter.academicSemesterId) {
     const currentSemester = await prisma.academicSemester.findFirst({
       where: {
         isCurrent: true,
       },
     });
-    filter.academicSemesterId = currentSemester?.id
+    filter.academicSemesterId = currentSemester?.id;
   }
 
   const result = await prisma.studentEnrolledCourse.findMany({
@@ -162,13 +161,76 @@ const myCourses = async (
       student: {
         studentId: authUserId,
       },
-      ...filter
+      ...filter,
     },
     include: {
-      course: true
-    }
+      course: true,
+    },
   });
 
+  return result;
+};
+
+const getMyCourseSchedules = async (
+  authUserId: string,
+  filter: {
+    courseId?: string | undefined;
+    academicSemesterId?: string | undefined;
+  }
+) => {
+  if (!filter.academicSemesterId) {
+    const currentSemester = await prisma.academicSemester.findFirst({
+      where: {
+        isCurrent: true,
+      },
+    });
+    filter.academicSemesterId = currentSemester?.id;
+  }
+
+  const studentEnrolledCourses = await myCourses(authUserId, filter);
+  const studentEnrolledCourseIds = studentEnrolledCourses.map(
+    item => item.courseId
+  );
+  const result = await prisma.studentSemesterRegistrationCourse.findMany({
+    where: {
+      student: {
+        studentId: authUserId,
+      },
+      semesterRegistration: {
+        academicSemester: {
+          id: filter.academicSemesterId,
+        },
+      },
+      offeredCourse: {
+        course: {
+          id: {
+            in: studentEnrolledCourseIds,
+          },
+        },
+      },
+    },
+    include: {
+      offeredCourse: {
+        include: {
+          course: true,
+        },
+      },
+      offeredCourseSection: {
+        include: {
+          offeredCourseClassSchedules: {
+            include: {
+              room: {
+                include: {
+                  building: true,
+                },
+              },
+              faculty: true,
+            },
+          },
+        },
+      },
+    },
+  });
   return result;
 };
 
@@ -179,4 +241,5 @@ export const StudentService = {
   updateIntoDB,
   deleteFromDB,
   myCourses,
+  getMyCourseSchedules,
 };

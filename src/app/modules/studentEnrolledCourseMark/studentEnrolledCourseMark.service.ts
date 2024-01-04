@@ -16,6 +16,7 @@ import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
 import { IStudentEnrolledCourseFilterRequest } from '../studentEnrolledCourse/studentEnrolledCourse.interface';
 import { StudentEnrolledCourseMarkUtils } from './studentEnrolledCourseMark.utils';
+import { IStudentEnrolledCourseMarkFilterRequest } from './studentEnrolledCourseMark.interface';
 
 const createStudentEnrolledCourseDefaultMark = async (
   prismaClient: Omit<
@@ -322,9 +323,60 @@ const updateFinalMarks = async (payload: any) => {
   return grades;
 };
 
+const getMyCourseMarks = async (
+  filters: IStudentEnrolledCourseMarkFilterRequest,
+  options: IPaginationOptions,
+  authUser: any
+): Promise<IGenericResponse<StudentEnrolledCourseMark[]>> => {
+  const { limit, page } = paginationHelpers.calculatePagination(options);
+
+  const student = await prisma.student.findFirst({
+    where: {
+      studentId: authUser.id,
+    },
+  });
+
+  if (!student) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Student not found');
+  }
+
+  const marks = await prisma.studentEnrolledCourseMark.findMany({
+    where: {
+      student: {
+        id: student.id,
+      },
+      academicSemester: {
+        id: filters.academicSemesterId,
+      },
+      studentEnrolledCourse: {
+        course: {
+          id: filters.courseId,
+        },
+      },
+    },
+    include: {
+      studentEnrolledCourse: {
+        include: {
+          course: true,
+        },
+      },
+    },
+  });
+
+  return {
+    meta: {
+      total: marks.length,
+      page,
+      limit,
+    },
+    data: marks,
+  };
+};
+
 export const StudentEnrolledCourseMarkService = {
   createStudentEnrolledCourseDefaultMark,
   getAllFromDB,
   updateStudentMarks,
   updateFinalMarks,
+  getMyCourseMarks,
 };

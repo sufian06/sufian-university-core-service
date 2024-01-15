@@ -61,7 +61,7 @@ const deleteByIdFromDB = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic Semester deleted fetched!',
+    message: 'Academic Semester deleted successfully!',
     data: result,
   });
 });

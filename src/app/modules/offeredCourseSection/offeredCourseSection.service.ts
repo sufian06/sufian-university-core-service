@@ -68,7 +68,7 @@ const insertIntoDB = async (
     const scheduleData = classSchedules.map((schedule: IClassSchedules) => ({
       startTime: schedule.startTime,
       endTime: schedule.endTime,
-      dayOfweek: schedule.dayOfWeek,
+      dayOfWeek: schedule.dayOfWeek,
       roomId: schedule.roomId,
       facultyId: schedule.facultyId,
       offeredCourseSectionId: createOfferedCourseSection.id,

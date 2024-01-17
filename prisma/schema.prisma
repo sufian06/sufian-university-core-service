@@ -235,7 +235,7 @@ model OfferedCourseClassSchedule {
   id        String   @id @default(uuid())
   startTime String
   endTime   String
-  dayOfWeek WeekDays @default(SATURTDAY)
+  dayOfWeek WeekDays @default(SATURDAY)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -357,10 +357,10 @@ enum SemesterRegistrationStatus {
 }
 
 enum WeekDays {
-  SATURTDAY
+  SATURDAY
   SUNDAY
   MONDAY
-  TUESdAY
+  TUESDAY
   WEDNESDAY
   THURSDAY
   FRIDAY

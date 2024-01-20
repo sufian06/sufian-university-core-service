@@ -1,19 +1,17 @@
 import { Request, Response } from 'express';
-import catchAsync from '../../../shared/catchAsync';
-import { AcademicDepartmentService } from './academicDepartment.service';
-import sendResponse from '../../../shared/sendResponse';
-import { AcademicDepartment } from '@prisma/client';
 import httpStatus from 'http-status';
+import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
+import sendResponse from '../../../shared/sendResponse';
+import { AcademicDepartmentService } from './academicDepartment.service';
 import { academicDepartmentFilterableFields } from './academicDepartment.constants';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   const result = await AcademicDepartmentService.insertIntoDB(req.body);
-
-  sendResponse<AcademicDepartment>(res, {
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department created successfully!',
+    message: 'AcademicDepartment created successfully',
     data: result,
   });
 });
@@ -21,48 +19,45 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, academicDepartmentFilterableFields);
   const options = pick(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
-
   const result = await AcademicDepartmentService.getAllFromDB(filters, options);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department data retrieved successfully!',
+    message: 'AcademicDepartments fetched successfully',
     meta: result.meta,
     data: result.data,
   });
 });
 
 const getByIdFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await AcademicDepartmentService.getByIdFromDB(req.params.id);
+  const { id } = req.params;
+  const result = await AcademicDepartmentService.getByIdFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department fetched successfully!',
+    message: 'AcademicDepartment fetched successfully',
     data: result,
   });
 });
 
 const updateOneInDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await AcademicDepartmentService.updateOneInDB(
-    req.params.id,
-    req.body
-  );
+  const { id } = req.params;
+  const result = await AcademicDepartmentService.updateOneInDB(id, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department updated successfully!',
+    message: 'AcademicDepartment updated successfully',
     data: result,
   });
 });
 
 const deleteByIdFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await AcademicDepartmentService.deleteByIdFromDB(
-    req.params.id
-  );
+  const { id } = req.params;
+  const result = await AcademicDepartmentService.deleteByIdFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department deleted successfully!',
+    message: 'AcademicDepartment delete successfully',
     data: result,
   });
 });

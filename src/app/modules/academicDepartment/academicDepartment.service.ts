@@ -3,24 +3,22 @@ import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
+import { RedisClient } from '../../../shared/redis';
+import { IAcademicDepartmentFilterRequest } from './academicDepartment.interface';
 import {
+  EVENT_ACADEMIC_DEPARTMENT_CREATED,
+  EVENT_ACADEMIC_DEPARTMENT_DELETED,
+  EVENT_ACADEMIC_DEPARTMENT_UPDATED,
   academicDepartmentRelationalFields,
   academicDepartmentRelationalFieldsMapper,
   academicDepartmentSearchableFields,
 } from './academicDepartment.constants';
-import { IAcademicDepartmentFilterRequest } from './academicDepartment.interface';
-import { RedisClient } from '../../../shared/redis';
-import {
-  EVENT_ACADEMIC_SEMESTER_CREATED,
-  EVENT_ACADEMIC_SEMESTER_DELETED,
-  EVENT_ACADEMIC_SEMESTER_UPDATED,
-} from '../academicSemester/academicSemester.constants';
 
 const insertIntoDB = async (
-  academicDepartmentData: AcademicDepartment
+  data: AcademicDepartment
 ): Promise<AcademicDepartment> => {
   const result = await prisma.academicDepartment.create({
-    data: academicDepartmentData,
+    data,
     include: {
       academicFaculty: true,
     },
@@ -28,7 +26,7 @@ const insertIntoDB = async (
 
   if (result) {
     await RedisClient.publish(
-      EVENT_ACADEMIC_SEMESTER_CREATED,
+      EVENT_ACADEMIC_DEPARTMENT_CREATED,
       JSON.stringify(result)
     );
   }
@@ -89,7 +87,9 @@ const getAllFromDB = async (
     orderBy:
       options.sortBy && options.sortOrder
         ? { [options.sortBy]: options.sortOrder }
-        : { createdAt: 'desc' },
+        : {
+            createdAt: 'desc',
+          },
   });
   const total = await prisma.academicDepartment.count({
     where: whereConditions,
@@ -112,8 +112,10 @@ const getByIdFromDB = async (
     where: {
       id,
     },
+    include: {
+      academicFaculty: true,
+    },
   });
-
   return result;
 };
 
@@ -130,10 +132,9 @@ const updateOneInDB = async (
       academicFaculty: true,
     },
   });
-
   if (result) {
     await RedisClient.publish(
-      EVENT_ACADEMIC_SEMESTER_UPDATED,
+      EVENT_ACADEMIC_DEPARTMENT_UPDATED,
       JSON.stringify(result)
     );
   }
@@ -145,11 +146,13 @@ const deleteByIdFromDB = async (id: string): Promise<AcademicDepartment> => {
     where: {
       id,
     },
+    include: {
+      academicFaculty: true,
+    },
   });
-
   if (result) {
     await RedisClient.publish(
-      EVENT_ACADEMIC_SEMESTER_DELETED,
+      EVENT_ACADEMIC_DEPARTMENT_DELETED,
       JSON.stringify(result)
     );
   }

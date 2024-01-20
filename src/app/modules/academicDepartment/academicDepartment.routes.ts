@@ -1,9 +1,9 @@
 import express from 'express';
-import validateRequest from '../../middlewares/validateRequest';
-import { AcademicDepartmentValidation } from './academicDepartment.validations';
-import { AcademicDepartmentController } from './academicDepartment.controller';
-import auth from '../../middlewares/auth';
 import { ENUM_USER_ROLE } from '../../../enums/user';
+import auth from '../../middlewares/auth';
+import validateRequest from '../../middlewares/validateRequest';
+import { AcademicDepartmentController } from './academicDepartment.controller';
+import { AcademicDepartmentValidation } from './academicDepartment.validations';
 
 const router = express.Router();
 
@@ -12,15 +12,15 @@ router.get('/:id', AcademicDepartmentController.getByIdFromDB);
 
 router.post(
   '/',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   validateRequest(AcademicDepartmentValidation.create),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   AcademicDepartmentController.insertIntoDB
 );
 
 router.patch(
   '/:id',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   validateRequest(AcademicDepartmentValidation.update),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   AcademicDepartmentController.updateOneInDB
 );
 

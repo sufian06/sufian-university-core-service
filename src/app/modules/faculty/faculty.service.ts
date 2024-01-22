@@ -1,17 +1,18 @@
 import { CourseFaculty, Faculty, Prisma, Student } from '@prisma/client';
-import prisma from '../../../shared/prisma';
-import { IGenericResponse } from '../../../interfaces/common';
-import {
-  IFacultyFilterRequest,
-  IFacultyMyCourseStudentsRequest,
-} from './faculty.interface';
-import { IPaginationOptions } from '../../../interfaces/pagination';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import prisma from '../../../shared/prisma';
 import {
   facultyRelationalFields,
   facultyRelationalFieldsMapper,
   facultySearchableFields,
 } from './faculty.constants';
+import {
+  FacultyCreatedEvent,
+  IFacultyFilterRequest,
+  IFacultyMyCourseStudentsRequest,
+} from './faculty.interface';
 
 const insertIntoDB = async (data: Faculty): Promise<Faculty> => {
   const result = await prisma.faculty.create({
@@ -344,6 +345,27 @@ const getMyCourseStudents = async (
   };
 };
 
+const createFacultyFromEvent = async (
+  e: FacultyCreatedEvent
+): Promise<void> => {
+  const faculty: Partial<Faculty> = {
+    facultyId: e.id,
+    firstName: e.name.firstName,
+    lastName: e.name.lastName,
+    middleName: e.name.middleName,
+    profileImage: e.profileImage,
+    email: e.email,
+    contactNo: e.contactNo,
+    gender: e.gender,
+    bloodGroup: e.bloodGroup,
+    designation: e.designation,
+    academicFacultyId: e.academicFaculty.syncId,
+    academicDepartmentId: e.academicDepartment.syncId,
+  };
+
+  await insertIntoDB(faculty as Faculty);
+};
+
 export const FacultyService = {
   insertIntoDB,
   getAllFromDB,
@@ -354,4 +376,5 @@ export const FacultyService = {
   removeCourses,
   myCourses,
   getMyCourseStudents,
+  createFacultyFromEvent,
 };

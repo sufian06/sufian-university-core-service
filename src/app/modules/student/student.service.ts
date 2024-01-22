@@ -282,6 +282,7 @@ const createStudentFromEvent = async (e: any) => {
     academicSemesterId: e.academicSemester.syncId,
     academicDepartmentId: e.academicDepartment.syncId,
     academicFacultyId: e.academicFaculty.syncId,
+    profileImage: e.profileImage,
   };
 
   await insertIntoDB(studentData as Student);

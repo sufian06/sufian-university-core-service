@@ -129,6 +129,16 @@
             "date": 1705893366168,
             "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\errors\\sum-2024-22-01-09-error.log",
             "hash": "b21636a5d25aa113495134919a922659ba979eba949a7e6b96e61dfeafac1600"
+        },
+        {
+            "date": 1706068406007,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\errors\\sum-2024-24-01-09-error.log",
+            "hash": "aa78d1be86c27eaa4ff9f61ae33d5aac927544acc8fcc7c46fae86ae4de6f5ad"
+        },
+        {
+            "date": 1706068982336,
+            "name": "D:\\fullStack-project\\sufian-university\\backend\\sufian-university-core-service\\logs\\winston\\errors\\sum-2024-24-01-10-error.log",
+            "hash": "3cb631c742b819bdf35e6c7f50990a6897d8f45cafcd5459dfe5e5fe6fef44e3"
         }
     ],
     "hashType": "sha256"

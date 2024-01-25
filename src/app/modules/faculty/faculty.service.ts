@@ -131,6 +131,10 @@ const deleteFromDB = async (id: string): Promise<Faculty> => {
     where: {
       id,
     },
+    include: {
+      academicFaculty: true,
+      academicDepartment: true,
+    },
   });
   return result;
 };
@@ -374,7 +378,8 @@ const updateFacultyFromEvent = async (e: any): Promise<void> => {
   });
 
   if (!isExist) {
-    createFacultyFromEvent(e);
+    await createFacultyFromEvent(e);
+    return;
   } else {
     const facultyData: Partial<Faculty> = {
       facultyId: e.id,

@@ -96,9 +96,9 @@ const getAllFromDB = async (
 };
 
 const getByIdFromDB = async (id: string): Promise<Student | null> => {
-  const result = await prisma.student.findUnique({
+  const result = await prisma.student.findFirst({
     where: {
-      id,
+      studentId: id,
     },
     include: {
       academicFaculty: true,

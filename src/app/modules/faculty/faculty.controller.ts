@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import catchAsync from '../../../shared/catchAsync';
-import { FacultyService } from './faculty.service';
-import sendResponse from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
+import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
+import sendResponse from '../../../shared/sendResponse';
 import { facultyFilterableFields } from './faculty.constants';
+import { FacultyService } from './faculty.service';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   const result = await FacultyService.insertIntoDB(req.body);
